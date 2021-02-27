@@ -143,6 +143,12 @@
   <ItemGroup>
     <ClCompile Include="src\Main.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="src\Engine\Board.h" />
+    <ClInclude Include="src\Engine\Errors.h" />
+    <ClInclude Include="src\Engine\Piece.h" />
+    <ClInclude Include="src\Engine\Position.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
