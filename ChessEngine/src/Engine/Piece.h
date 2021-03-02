@@ -7,6 +7,19 @@ enum class Team {
 	BLACK
 };
 
+/*
+Translate python code into C++ here:
+points = {
+	"King": 0,
+	"Queen": 9,
+	...
+	"Pawn": 1
+}
+
+For piece class init:
+self.points = points[name]
+*/
+
 class Piece {
 	std::string m_name;
 	Team m_team = Team::WHITE;
