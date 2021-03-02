@@ -14,22 +14,23 @@ Positions getPawnPositions(const Board& board, const Position& currentPosition) 
 	// pretend this mess doesn't exist
 	// the pawn is tricky, okay?
 	Positions possiblePositions;
-	if (currentPosition.getPosition()[1] == '2') {
+	std::map<std::string, Position> rawBoard = board.getBoard();
+	if (currentPosition.pos[1] == '2') {
 		if (!currentPosition.up.occupied()) {
-			possiblePositions.push_back(currentPosition.up.getPosition());
-			possiblePositions.push_back(currentPosition.up.up.getPosition());
+			possiblePositions.push_back(currentPosition.up.pos);
+			possiblePositions.push_back(currentPosition.up.up.pos);
 		}
 	}
 	else {
 		if (!currentPosition.up.occupied()) {
-			possiblePositions.push_back(currentPosition.up.getPosition());
+			possiblePositions.push_back(currentPosition.up.pos);
 		}
 	}
-	if (board.getBoard()[currentPosition.diagonal_upleft().getPosition()].occupied()) {
-		possiblePositions.push_back(currentPosition.diagonal_upleft().getPosition());
+	if (rawBoard[currentPosition.upleft().pos].occupied()) {
+		possiblePositions.push_back(currentPosition.upleft().pos);
 	}
-	if (board.getBoard()[currentPosition.diagonal_upright().getPosition()].occupied()) {
-		possiblePositions.push_back(currentPosition.diagonal_upright().getPosition());
+	if (rawBoard[currentPosition.upright().pos].occupied()) {
+		possiblePositions.push_back(currentPosition.upright().pos);
 	}
 	return possiblePositions;
 }

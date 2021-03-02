@@ -38,7 +38,7 @@ public:
 		this->isOccupied = true;
 	}
 
-	std::string getPosition() const {
+	std::string f_pos() const {
 		return this->position;
 	}
 
@@ -100,15 +100,16 @@ public:
 		}
 	}
 
-	Position diagonal_upright() const { return this->up.right; }
-	Position diagonal_downright() const { return this->down.right; }
-	Position diagonal_upleft() const { return this->up.left; }
-	Position diagonal_downleft() const { return this->down.left; }
+	Position upright() const { return this->up.right; }
+	Position downright() const { return this->down.right; }
+	Position upleft() const { return this->up.left; }
+	Position downleft() const { return this->down.left; }
 
 	__declspec(property(get=f_left)) Position left;
 	__declspec(property(get=f_right)) Position right;
 	__declspec(property(get=f_up)) Position up;
 	__declspec(property(get=f_down)) Position down;
+	__declspec(property(get=f_pos)) std::string pos;
 };
 
 #endif
