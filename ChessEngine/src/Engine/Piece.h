@@ -16,6 +16,10 @@ public:
 		this->m_name = name;
 		this->m_team = team;
 	}
+
+	Team getTeam() const {
+		return this->m_team;
+	}
 };
 
 #endif

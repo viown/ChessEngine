@@ -33,17 +33,24 @@ public:
 		isOccupied = true;
 	}
 
+	Piece getPiece() const {
+		if (this->isOccupied)
+			return this->piece;
+		else
+			throw -1;
+	}
+
 	void setPiece(const Piece& p) {
 		this->piece = p;
 		this->isOccupied = true;
 	}
 
-	std::string f_pos() const {
-		return this->position;
-	}
-
 	bool occupied() const {
 		return this->isOccupied;
+	}
+
+	std::string f_pos() const {
+		return this->position;
 	}
 
 	Position f_left() const {

@@ -27,10 +27,14 @@ Positions getPawnPositions(const Board& board, const Position& currentPosition) 
 		}
 	}
 	if (rawBoard[currentPosition.upleft().pos].occupied()) {
-		possiblePositions.push_back(currentPosition.upleft().pos);
+		if (!(rawBoard[currentPosition.upleft().pos].getPiece().getTeam() == currentPosition.getPiece().getTeam())) {
+			possiblePositions.push_back(currentPosition.upleft().pos);
+		}
 	}
 	if (rawBoard[currentPosition.upright().pos].occupied()) {
-		possiblePositions.push_back(currentPosition.upright().pos);
+		if (!(rawBoard[currentPosition.upright().pos].getPiece().getTeam() == currentPosition.getPiece().getTeam())) {
+			possiblePositions.push_back(currentPosition.upright().pos);
+		}
 	}
 	return possiblePositions;
 }
