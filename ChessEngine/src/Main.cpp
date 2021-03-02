@@ -3,6 +3,6 @@
 #include "Engine/Position.h"
 
 int main() {
-    Board b;
+    
     return 0;
 }

@@ -9,8 +9,8 @@ private:
 	std::map<std::string, Position> m_board;
 public:
 	Board(bool default_setup=true) {
-		std::string rows = "abcdefgh";
-		int columnAmount = 8;
+		const std::string rows = "abcdefgh";
+		constexpr int columnAmount = 8;
 		for (char c : rows) {
 			for (int i = 1; i <= columnAmount; ++i) {
 				std::string pos = c + std::to_string(i);
@@ -19,8 +19,12 @@ public:
 		}
 	}
 
-	std::map<std::string, Position> getBoard() {
+	std::map<std::string, Position> getBoard() const {
 		return this->m_board;
+	}
+
+	void move(std::string pos, std::string to) {
+
 	}
 };
 

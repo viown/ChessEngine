@@ -146,6 +146,7 @@
   <ItemGroup>
     <ClInclude Include="src\Engine\Board.h" />
     <ClInclude Include="src\Engine\Errors.h" />
+    <ClInclude Include="src\Engine\Moves.h" />
     <ClInclude Include="src\Engine\Piece.h" />
     <ClInclude Include="src\Engine\Position.h" />
   </ItemGroup>
