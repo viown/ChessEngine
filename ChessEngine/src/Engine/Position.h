@@ -1,13 +1,44 @@
 #ifndef ENGINE_POSITION_H
 #define ENGINE_POSITION_H
+#include "Piece.h"
+#include "./Errors.h"
 #include <string>
+#include <regex>
+
+
+bool validatePosition(std::string pos) {
+	if (pos.size() > 2) {
+		return false;
+	}
+	std::regex validator("[a-h][1-8]");
+	return std::regex_match(pos, validator);
+}
 
 class Position {
 private:
 	std::string position;
+	Piece piece;
+	bool isOccupied = false;
 public:
 	Position() = default;
-	Position(std::string pos) : position{position} {}
+	Position(std::string pos) : position{ pos } {
+		if (!validatePosition(pos))
+			throw InvalidPosition{};
+	}
+	Position(std::string pos, Piece objPiece) : position{ position }, piece{ objPiece } {
+		if (!validatePosition(pos))
+			throw InvalidPosition{};
+		isOccupied = true;
+	}
+
+	void setPiece(const Piece& p) {
+		this->piece = p;
+		this->isOccupied = true;
+	}
+
+	std::string getPosition() {
+		return this->position;
+	}
 
 	Position f_left() {
 		return Position{ "test" };

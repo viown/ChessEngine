@@ -2,5 +2,6 @@
 #define ENGINE_ERRORS_H
 
 struct MoveNotAllowed {};
+struct InvalidPosition {};
 
 #endif
