@@ -6,7 +6,7 @@
 #include <regex>
 
 std::string rows = "abcdefgh";
-constexpr int totalColumns = 8;
+constexpr int columnAmount = 8;
 
 bool validatePosition(std::string pos) {
 	if (pos.size() > 2) {
@@ -43,6 +43,9 @@ public:
 	void setPiece(const Piece& p) {
 		this->piece = p;
 		this->isOccupied = true;
+	}
+	void setPiece(std::string p, Team team) {
+		setPiece(Piece{ p, team });
 	}
 
 	bool occupied() const {

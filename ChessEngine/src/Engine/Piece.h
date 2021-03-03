@@ -17,7 +17,11 @@ public:
 		this->m_team = team;
 	}
 
-	Team getTeam() const {
+	std::string name() {
+		return this->m_name;
+	}
+
+	Team team() const {
 		return this->m_team;
 	}
 };
