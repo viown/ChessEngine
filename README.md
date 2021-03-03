@@ -6,3 +6,4 @@ TODO (Not in any order):
 - Detect Checkmate ❌
 - Detect Stalemate ❌
 - Castling ❌
+- Pawn Promotion ❌
