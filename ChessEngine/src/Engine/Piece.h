@@ -1,24 +1,22 @@
 #ifndef ENGINE_PIECE_H
 #define ENGINE_PIECE_H
 #include <string>
+#include <map>
 
 enum class Team {
 	WHITE,
 	BLACK
 };
 
-/*
-Translate python code into C++ here:
-points = {
-	"King": 0,
-	"Queen": 9,
-	...
-	"Pawn": 1
-}
-
-For piece class init:
-self.points = points[name]
-*/
+std::map<std::string, int> points = {
+	{"King", 0},
+	{"Queen", 9},
+	{"Rook", 5},
+	{"Bishop", 3},
+	{"Knight", 3},
+	{"Pawn", 1}
+	
+};
 
 class Piece {
 	std::string m_name;
