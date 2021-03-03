@@ -1,6 +1,6 @@
 #ifndef ENGINE_POSITION_H
 #define ENGINE_POSITION_H
-#include "Piece.h"
+#include "./Piece.h"
 #include "./Errors.h"
 #include <string>
 #include <regex>
@@ -61,12 +61,7 @@ public:
 			throw MoveNotAllowed{};
 		for (int i = 0; i < rows.size(); ++i) {
 			if (rows[i] == this->position[0]) {
-				if (!this->isOccupied) {
-					return Position{ std::string{rows[i-1]} + this->position[1] };
-				}
-				else {
-					return Position{ std::string{rows[i-1]} + this->position[1], this->piece };
-				}
+				return Position{ std::string{rows[i-1]} + this->position[1] };
 			}
 		}
 	}
@@ -76,12 +71,7 @@ public:
 			throw MoveNotAllowed{};
 		for (int i = 0; i < rows.size(); ++i) {
 			if (rows[i] == this->position[0]) {
-				if (!this->isOccupied) {
-					return Position{ std::string{rows[i + 1]} + this->position[1] };
-				}
-				else {
-					return Position{ std::string{rows[i + 1]} + this->position[1], this->piece };
-				}
+				return Position{ std::string{rows[i + 1]} + this->position[1] };
 			}
 		}
 	}
@@ -90,24 +80,14 @@ public:
 		if (this->position[1] == '8')
 			throw MoveNotAllowed{};
 		int posup = std::stoi(std::string{ this->position[1] }) + 1;
-		if (!this->isOccupied) {
-			return Position{ std::string{this->position[0]} + std::to_string(posup) };
-		}
-		else {
-			return Position{ std::string{this->position[0]} + std::to_string(posup), this->piece };
-		}
+		return Position{ std::string{this->position[0]} + std::to_string(posup) };
 	}
 
 	Position f_down() const {
 		if (this->position[1] == '1')
 			throw MoveNotAllowed{};
 		int posup = std::stoi(std::string{ this->position[1] }) - 1;
-		if (!this->isOccupied) {
-			return Position{ std::string{this->position[0]} + std::to_string(posup) };
-		}
-		else {
-			return Position{ std::string{this->position[0]} + std::to_string(posup), this->piece };
-		}
+		return Position{ std::string{this->position[0]} + std::to_string(posup) };
 	}
 
 	Position upright() const { return this->up.right; }

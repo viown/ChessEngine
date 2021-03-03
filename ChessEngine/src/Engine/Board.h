@@ -50,6 +50,10 @@ public:
 		return this->m_board;
 	}
 
+	Position operator[](std::string location) {
+		return this->m_board[location];
+	}
+
 	void move(std::string pos, std::string to) {
 
 	}

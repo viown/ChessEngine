@@ -17,15 +17,10 @@ Positions getPawnPositions(const Board& board, const Position& currentPosition) 
 	if (currentPosition.pos[1] == '8')
 		return possiblePositions;
 	std::map<std::string, Position> rawBoard = board.getBoard();
+	possiblePositions.push_back(currentPosition.up.pos);
 	if (currentPosition.pos[1] == '2') {
-		if (!currentPosition.up.occupied()) {
-			possiblePositions.push_back(currentPosition.up.pos);
+		if (!rawBoard[currentPosition.up.pos].occupied() && !rawBoard[currentPosition.up.up.pos].occupied()) {
 			possiblePositions.push_back(currentPosition.up.up.pos);
-		}
-	}
-	else {
-		if (!currentPosition.up.occupied()) {
-			possiblePositions.push_back(currentPosition.up.pos);
 		}
 	}
 	if (rawBoard[currentPosition.upleft().pos].occupied()) {
