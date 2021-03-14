@@ -4,39 +4,39 @@
 #include "./Board.h"
 #include "./Position.h"
 
-/*
-	TODO: organize this stuff jesus
-*/
 
 using Positions = std::vector<std::string>;
 
+bool isValid(std::string n) {
+	return (n[0] >= 'a' && n[0] <= 'h') && (n[1] >= '1' && n[1] <= '8');
+}
+
 Positions getPawnPositions(const Board& board, const Position& currentPosition) {
-	// pretend this mess doesn't exist
-	// the pawn is tricky, okay?
-	Positions possiblePositions;
+	Positions availablePositions;
 	if (currentPosition.pos[1] == '8')
-		return possiblePositions;
+		return availablePositions;
 	std::map<std::string, Position> rawBoard = board.getBoard();
-	possiblePositions.push_back(currentPosition.up.pos);
+	availablePositions.push_back(currentPosition.up.pos);
 	if (currentPosition.pos[1] == '2') {
 		if (!rawBoard[currentPosition.up.pos].occupied() && !rawBoard[currentPosition.up.up.pos].occupied()) {
-			possiblePositions.push_back(currentPosition.up.up.pos);
+			availablePositions.push_back(currentPosition.up.up.pos);
 		}
 	}
 	if (rawBoard[currentPosition.upleft().pos].occupied()) {
 		if (!(rawBoard[currentPosition.upleft().pos].getPiece().team() == currentPosition.getPiece().team())) {
-			possiblePositions.push_back(currentPosition.upleft().pos);
+			availablePositions.push_back(currentPosition.upleft().pos);
 		}
 	}
 	if (rawBoard[currentPosition.upright().pos].occupied()) {
 		if (!(rawBoard[currentPosition.upright().pos].getPiece().team() == currentPosition.getPiece().team())) {
-			possiblePositions.push_back(currentPosition.upright().pos);
+			availablePositions.push_back(currentPosition.upright().pos);
 		}
 	}
-	return possiblePositions;
+	return availablePositions;
 }
 
 Positions getKnightPositions(const Board& board, const Position& currentPosition) {
+	Positions availablePositions;
 	return std::vector<std::string>{};
 }
 

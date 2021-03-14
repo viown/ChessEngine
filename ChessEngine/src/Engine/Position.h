@@ -8,14 +8,6 @@
 std::string rows = "abcdefgh";
 constexpr int columnAmount = 8;
 
-bool validatePosition(std::string pos) {
-	if (pos.size() > 2) {
-		return false;
-	}
-	std::regex validator("[a-h][1-8]");
-	return std::regex_match(pos, validator);
-}
-
 class Position {
 private:
 	std::string position;
@@ -23,13 +15,8 @@ private:
 	bool isOccupied = false;
 public:
 	Position() = default;
-	Position(std::string pos) : position{ pos } {
-		if (!validatePosition(pos))
-			throw InvalidPosition{};
-	}
+	Position(std::string pos) : position{ pos } {}
 	Position(std::string pos, Piece objPiece) : position{ position }, piece{ objPiece } {
-		if (!validatePosition(pos))
-			throw InvalidPosition{};
 		isOccupied = true;
 	}
 
@@ -59,7 +46,7 @@ public:
 	Position f_left() const {
 		if (this->position[0] == 'a')
 			throw MoveNotAllowed{};
-		for (int i = 0; i < rows.size(); ++i) {
+		for (size_t i = 0; i < rows.size(); ++i) {
 			if (rows[i] == this->position[0]) {
 				return Position{ std::string{rows[i-1]} + this->position[1] };
 			}
@@ -69,7 +56,7 @@ public:
 	Position f_right() const {
 		if (this->position[0] == 'h')
 			throw MoveNotAllowed{};
-		for (int i = 0; i < rows.size(); ++i) {
+		for (size_t i = 0; i < rows.size(); ++i) {
 			if (rows[i] == this->position[0]) {
 				return Position{ std::string{rows[i + 1]} + this->position[1] };
 			}
